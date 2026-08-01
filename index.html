@@ -129,6 +129,10 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .empty{text-align:center;color:var(--muted);padding:40px 0;font-style:italic;display:none}
 .empty.show{display:block}
 
+.bonus{padding:8px 0 48px}
+.bonus .season-head .eyebrow{color:var(--lavender)}
+.bonus .season-head p a{color:var(--lotus)}
+
 footer{border-top:1px solid var(--line);padding:34px 0 44px;text-align:center}
 footer .note{color:var(--mist);font-size:.92rem;margin-bottom:14px}
 footer .related{
@@ -175,6 +179,36 @@ footer .meta a:hover{color:var(--gold)}
 
 <section class="seasons-list wrap" id="seasonsList"></section>
 <p class="empty wrap" id="empty">No blueprints match your search.</p>
+
+<section class="bonus wrap" id="bonusList">
+  <div class="season-head">
+    <div class="eyebrow">Bonus — outside the official 50</div>
+    <h2>Market Infrastructure</h2>
+    <p>The plumbing nobody sees between a click and a settled trade. Read the full walkthrough in <a href="https://bodhiprotocol.com/essays/infrastructure-the-nine-systems-behind-every-trade" target="_blank" rel="noopener">the Infrastructure essay</a>.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="id">BONUS · FIX</div>
+      <h3>FIX Protocol</h3>
+      <div class="q">How do trading systems from different companies talk to each other?</div>
+    </div>
+    <div class="card">
+      <div class="id">BONUS · GATEWAY</div>
+      <h3>Exchange Gateway</h3>
+      <div class="q">How does an order actually enter an exchange's own infrastructure?</div>
+    </div>
+    <div class="card">
+      <div class="id">BONUS · CCP</div>
+      <h3>CCP (Central Counterparty)</h3>
+      <div class="q">Who guarantees a trade after it's matched, before it settles?</div>
+    </div>
+    <div class="card">
+      <div class="id">BONUS · SWIFT</div>
+      <h3>SWIFT</h3>
+      <div class="q">How do banks instruct each other to move money and securities?</div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
@@ -297,6 +331,12 @@ pillsBox.addEventListener("click", e => {
 });
 
 seasonsList.addEventListener("click", e => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  card.classList.toggle("open");
+});
+
+document.getElementById("bonusList").addEventListener("click", e => {
   const card = e.target.closest(".card");
   if (!card) return;
   card.classList.toggle("open");
